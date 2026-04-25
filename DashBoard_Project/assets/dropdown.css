@@ -1,0 +1,14 @@
+.Select-control {
+    background-color: white !important;
+    color: black !important;
+}
+
+.Select--single > .Select-control .Select-value,
+.Select-placeholder {
+    color: black !important;
+}
+
+.Select-menu-outer {
+    background-color: white !important;
+    color: black !important;
+}
