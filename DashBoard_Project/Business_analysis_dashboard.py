@@ -177,7 +177,8 @@ def encode_and_predict(feat_dict):
         code = cats.index(val) if val in cats else -1
         row[col] = code
     X = pd.DataFrame([row])[MODEL_FEATURE_COLS]
-    return float(model.predict(X)[0])
+    # Pass plain numpy array to bypass XGBoost feature names bug
+    return float(model.predict(X.values)[0])
 
 # ─────────────────────────────────────────────
 # DESIGN TOKENS
@@ -1041,7 +1042,7 @@ def cb_prediction(store, family, promo, stype, city, state, cluster,
                        'locale','locale_name','description','transferred']:
                 _cats = CAT_MAPS[_c]
                 _Xb[_c] = _Xb[_c].apply(lambda v: _cats.index(v) if v in _cats else -1)
-            raw_preds = model.predict(_Xb)
+            raw_preds = model.predict(_Xb.values) # pass numpy array
             # Attach predictions to the filtered ts_df (same row count guaranteed by dedup)
             ts_df2 = ts_df.reset_index(drop=True).copy()
             ts_df2["pred"] = raw_preds
