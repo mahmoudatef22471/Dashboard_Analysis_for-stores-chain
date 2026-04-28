@@ -12,3 +12,8 @@
     background-color: white !important;
     color: black !important;
 }
+
+/* Force white text for standard HTML inputs used in Dash */
+input[type="number"], .dash-input {
+    color: white !important;
+}

@@ -426,7 +426,7 @@ def _dds():
             "fontSize": "12px", "marginBottom": "6px"}
 
 def _inp():
-    return {"backgroundColor": BG_CARD2, "color": C_WHITE,
+    return {"backgroundColor": BG_CARD2, "color": "white",
             "border": f"1px solid {BORDER}", "borderRadius": "6px",
             "padding": "8px 10px", "fontSize": "13px"}
 
